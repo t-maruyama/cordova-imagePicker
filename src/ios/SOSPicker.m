@@ -49,6 +49,8 @@
 	                     completion:nil];
 }
 
+- (void) getPictureBinary:(CDVInvokedUrlCommand *)command {
+}
 
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info {
 	CDVPluginResult* result = nil;

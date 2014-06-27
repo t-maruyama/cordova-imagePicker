@@ -28,12 +28,27 @@ ImagePicker.prototype.getPictures = function(success, fail, options) {
 	
 	var params = {
 		maximumImagesCount: options.maximumImagesCount ? options.maximumImagesCount : 15,
+		minimumImagesCount: options.minimumImagesCount ? options.minimumImagesCount : 1,
 		width: options.width ? options.width : 0,
 		height: options.height ? options.height : 0,
-		quality: options.quality ? options.quality : 100
+		//quality: options.quality ? options.quality : 100
 	};
 
 	return cordova.exec(success, fail, "ImagePicker", "getPictures", [params]);
 };
+
+ImagePicker.prototype.getPictureBinary = function(success, fail, options) {
+	if (!options) {
+		options = {};
+	}
+	
+	var params = {
+		needOriginal: 'needOriginal' in options ? options.needOriginal : true,
+		binType: options.returnType ? options.returnType: 'file_url',
+		quality: options.quality ? options.quality : 100
+	};
+
+	return cordova.exec(success, fail, "ImagePicker", "getPictureBinary", [params]);
+}
 
 window.imagePicker = new ImagePicker();
