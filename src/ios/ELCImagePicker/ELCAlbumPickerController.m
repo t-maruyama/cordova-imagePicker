@@ -98,6 +98,10 @@
 	[_parent selectedAssets:assets];
 }
 
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
 #pragma mark -
 #pragma mark Table view data source
 

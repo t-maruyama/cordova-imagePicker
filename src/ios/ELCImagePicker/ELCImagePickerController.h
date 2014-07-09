@@ -34,6 +34,7 @@
 
 @property (nonatomic, weak) id<ELCImagePickerControllerDelegate> imagePickerDelegate;
 @property (nonatomic, assign) NSInteger maximumImagesCount;
+@property (nonatomic, assign) NSInteger minimumImagesCount;
 
 /**
  * YES if the picker should return the original image,

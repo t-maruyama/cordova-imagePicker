@@ -85,11 +85,16 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        return YES;
-    } else {
-        return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
-    }
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+//        return YES;
+//    } else {
+//        return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+//    }
+    return NO;
+}
+
+- (BOOL)shouldAutorotate{
+    return NO;
 }
 
 @end

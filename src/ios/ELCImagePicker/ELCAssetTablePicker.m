@@ -45,6 +45,8 @@
         UIBarButtonItem *doneButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
         [self.navigationItem setRightBarButtonItem:doneButtonItem];
         [self.navigationItem setTitle:@"Loading..."];
+
+        self.navigationItem.rightBarButtonItem.enabled = NO;
     }
 
 	[self performSelectorInBackground:@selector(preparePhotos) withObject:nil];
@@ -107,7 +109,9 @@
                                                       animated:NO];
             }
             
-            [self.navigationItem setTitle:self.singleSelection ? @"Pick Photo" : @"Pick Photos"];
+            ELCAlbumPickerController *parent = (ELCAlbumPickerController *)self.parent;//TODO
+            
+            [self.navigationItem setTitle:self.singleSelection ? @"Pick Photo" : [NSString stringWithFormat:@"Pick %d to %d Photos", parent.minimumImagesCount, parent.maximumImagesCount]];
         });
     }
 }
@@ -151,6 +155,26 @@
     if (self.immediateReturn) {
         NSArray *singleAssetArray = @[asset.asset];
         [(NSObject *)self.parent performSelector:@selector(selectedAssets:) withObject:singleAssetArray afterDelay:0];
+    }
+    
+    ELCAlbumPickerController *parent = (ELCAlbumPickerController *)self.parent;
+    
+
+    if(parent.minimumImagesCount <= [self totalSelectedAssets]){
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }else{
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+}
+
+- (void)assetDeselected:(ELCAsset *)asset
+{
+    ELCAlbumPickerController *parent = (ELCAlbumPickerController *)self.parent;
+    
+    if(parent.minimumImagesCount <= [self totalSelectedAssets]){
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }else{
+        self.navigationItem.rightBarButtonItem.enabled = NO;
     }
 }
 

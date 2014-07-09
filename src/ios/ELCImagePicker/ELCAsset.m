@@ -41,6 +41,10 @@
         if (_parent != nil && [_parent respondsToSelector:@selector(assetSelected:)]) {
             [_parent assetSelected:self];
         }
+    }else{
+        if (_parent != nil && [_parent respondsToSelector:@selector(assetDeselected:)]) {
+            [_parent assetDeselected:self];
+        }
     }
 }
 

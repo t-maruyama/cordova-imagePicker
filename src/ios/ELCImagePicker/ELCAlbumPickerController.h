@@ -17,6 +17,9 @@
 @property (nonatomic, assign) BOOL singleSelection;
 @property (nonatomic, assign) BOOL immediateReturn;
 
+@property (nonatomic, assign) NSInteger maximumImagesCount;
+@property (nonatomic, assign) NSInteger minimumImagesCount;
+
 // optional, can be used to filter the assets displayed
 @property (nonatomic, weak) id<ELCAssetPickerFilterDelegate> assetPickerFilterDelegate;
 

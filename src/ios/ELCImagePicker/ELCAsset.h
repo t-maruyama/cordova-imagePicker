@@ -14,6 +14,7 @@
 
 @optional
 - (void)assetSelected:(ELCAsset *)asset;
+- (void)assetDeselected:(ELCAsset *)asset;
 - (BOOL)shouldSelectAsset:(ELCAsset *)asset;
 @end
 
